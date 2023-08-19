@@ -5,8 +5,8 @@ const CourseCard = () => {
  
       <div className="flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
         <img
-          className="h-78 w-full rounded-t-lg object-cover md:h-50 md:!rounded-none md:!rounded-l-lg"
-          src="https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"
+          className="h-48  w-full rounded-t-lg object-contain md:h-48 md:!rounded-none md:!rounded-l-lg"
+          src="https://www.hunarcourses.com/blog/wp-content/uploads/2021/08/Different-Types-of-Hand-Embroidery-Techniques.jpg"
           alt=""
         />
         <div className="flex flex-col justify-start p-6">
