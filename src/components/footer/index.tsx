@@ -1,6 +1,10 @@
 import React from "react";
 
 const Footer = () => {
+  const Message = "Message from website";
+  const handleWhatsApp = (data: any) => {
+    window.location.href = `https://api.whatsapp.com/send?phone=919003273189&text=${Message}`;
+  };
   return (
     <div>
       <footer
@@ -13,7 +17,7 @@ const Footer = () => {
             className="text-sm  sm:text-center dark:text-gray-400"
           >
             © 2023{" "}
-            <a href="#" className="hover:underline">
+            <a href="/" className="hover:underline">
               AAKK
             </a>
             . All Rights Reserved.
@@ -23,7 +27,7 @@ const Footer = () => {
             className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
           >
             <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <a href="/aboutus" className="mr-4 hover:underline md:mr-6 ">
                 About
               </a>
             </li>
@@ -36,7 +40,11 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a
+                style={{ cursor: "pointer" }}
+                onClick={() => handleWhatsApp("data")}
+                className="hover:underline"
+              >
                 Whatsapp
               </a>
             </li>

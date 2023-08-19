@@ -1,0 +1,41 @@
+.flex_conatiner {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .video_card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  .playlistContainer {
+    min-width: 1rem;
+    max-width: 10rem;
+    border-radius: 5px;
+    background-color: #e2e2e2;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+    cursor: pointer;
+  }
+  .playlistContainer_active {
+    min-width: 1rem;
+    max-width: 10rem;
+    border-radius: 5px;
+    background-color: #003366;
+    padding: 8px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .playListfelx {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom:10px ;
+  }

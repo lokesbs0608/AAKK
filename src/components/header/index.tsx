@@ -5,7 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
+
 
 export default function Header() {
   return (
@@ -13,11 +14,12 @@ export default function Header() {
       <AppBar sx={{ backgroundColor: "#003366" }} position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <a href="/">AAKK</a>
+            <a href="/">A<sup>2</sup>K<sup>2</sup></a>
           </Typography>
           <Button color="inherit"><a href="/blogs">blogs</a></Button>
           <Button color="inherit"><a href="/courses">Courses</a></Button>
-          <Button color="inherit">Videos</Button>
+          <Button color="inherit"><a href="/videos">Videos</a></Button>
+          <Button color="inherit"><a href="/aboutus">aboutus</a></Button>
         </Toolbar>
       </AppBar>
     </Box>

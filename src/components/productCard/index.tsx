@@ -8,9 +8,9 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 
 export default function ImgMediaCard() {
-  const Message = "Messge";
-  const handleWhatsApp = (data: any) => {
-    window.location.href = `https://api.whatsapp.com/send?phone=9513145995&text=${Message}`;
+  const Message = "Message from website";
+  const handleWhatsApp = () => {
+    window.location.href = `https://api.whatsapp.com/send?phone=919003273189&text=${Message}`;
   };
 
   return (
@@ -25,7 +25,7 @@ export default function ImgMediaCard() {
       <div className="px-5 pb-5">
         <a href="#">
           <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          Embroidery | Types of Hand Embroidery Techniques | Hunar
+            Embroidery | Types of Hand Embroidery Techniques | Hunar
           </h5>
         </a>
         <div className="flex items-center mt-2.5 mb-5">
@@ -80,10 +80,10 @@ export default function ImgMediaCard() {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
-          999
+            999
           </span>
           <a
-            href="#"
+            onClick={handleWhatsApp}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Buy Now
