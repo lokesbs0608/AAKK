@@ -16,6 +16,7 @@ import ListItem from "@mui/material/ListItem";
 import { Button, Hidden } from "@mui/material";
 import { useUser } from "@/Utlities/UserContext";
 
+
 export default function Header() {
   const { totalUniqueItems }: any = useCart();
   const [cartItemCount, setCartItemCount] = useState(totalUniqueItems);
@@ -42,6 +43,8 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ backgroundColor: "#003366" }} position="static">
@@ -54,7 +57,7 @@ export default function Header() {
           {/* Cart Icon */}
           <IconButton
             color="inherit"
-            onClick={() => handelRouter(`${User ? "/cart" : "/signin"}`)}
+            onClick={() => handelRouter("/cart" )}
           >
             <ShoppingCartIcon />
             {cartItemCount > 0 && <span>({cartItemCount})</span>}
@@ -74,8 +77,15 @@ export default function Header() {
               anchor="right"
               open={mobileMenuOpen}
               onClose={() => setMobileMenuOpen(false)}
+              sx={{
+                width: '50%', 
+                '& .MuiDrawer-paper': {
+                  width: '50%',
+                },
+              }}
+               
             >
-              <List>
+              <List >
                 <ListItem button onClick={() => handleMenuItemClick("/blogs")}>
                   Blogs
                 </ListItem>
