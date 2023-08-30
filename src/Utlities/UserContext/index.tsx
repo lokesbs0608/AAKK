@@ -8,7 +8,7 @@ export const UserProvider = ({ children }: any) => {
   const login = (usersData: any) => {
     setuser(usersData);
   };
-  const logout = () => {};
+  const logout = () => {}; 
 
   return <UserContext.Provider value={"lk"}>{children}</UserContext.Provider>;
 };
