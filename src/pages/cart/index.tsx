@@ -17,6 +17,7 @@ const Cart = () => {
         style={{ minWidth: "300px", maxWidth: "1200px" }}
         className="mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center pl-12"
       >
+        <h1  className="text-center text-warn" style={{}}>{cartItems.length===0?'No cart Items':''}</h1>
        
         {cartItems?.map((item: any) => {
           return (

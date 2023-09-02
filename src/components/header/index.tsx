@@ -59,16 +59,17 @@ export default function Header() {
           </div>
          
           </Typography>
-          <div className="flex justify-end">
+          <div className="flex justify-center md:mr-24 ml-4 p-2 h-18" style={{width:"600px"}}>
           <TextField 
-                id="search"
+                id=""
                 type="search"
                 label="Search"
-                fullWidth
+               
                 sx={{
                   background: "white",
                   borderRadius: "5px",
                   marginLeft: "1rem",
+                  
                 }}
                 InputProps={{
                   endAdornment: (
@@ -77,7 +78,7 @@ export default function Header() {
                     </InputAdornment>
                   ),
                 }}
-              />
+            fullWidth />
           </div>
          
          
@@ -138,7 +139,7 @@ export default function Header() {
             </Drawer>
           </Hidden>
           {/* Menu Items for Desktop */}
-          <Hidden mdDown>
+          <Hidden lgDown>
             <div>
               <Button color="inherit" onClick={() => handelRouter("/blogs")}>
                 Blogs

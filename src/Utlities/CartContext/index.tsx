@@ -3,8 +3,14 @@ import React, { createContext, useContext, useState } from "react";
 
 const CartContext = createContext({});
 
+interface CartItem {
+  id: string;
+  
+  // other properties...
+}
+
 export const CartProvider = ({ children }: any) => {
-  const [cartItems, setCartItems] = useState([{id:null,}]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const addItemToCart = (item: any) => {
     setCartItems((prevItems): any => [...prevItems, item]);
