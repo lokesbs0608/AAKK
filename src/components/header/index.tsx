@@ -13,9 +13,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { Button, Hidden } from "@mui/material";
+import {
+  Button,
+  Container,
+  Hidden,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import { useUser } from "@/Utlities/UserContext";
-
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Header() {
   const { totalUniqueItems }: any = useCart();
@@ -43,22 +49,41 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
-
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ backgroundColor: "#003366" }} position="static">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <div onClick={() => handelRouter("/")}>
+          <Typography className="flex " variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <div onClick={() => handelRouter("/")} >
               A<sup>2</sup>K<sup>2</sup>
-            </div>
+          </div>
+         
           </Typography>
+          <div className="flex justify-end">
+          <TextField 
+                id="search"
+                type="search"
+                label="Search"
+                fullWidth
+                sx={{
+                  background: "white",
+                  borderRadius: "5px",
+                  marginLeft: "1rem",
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+          </div>
+         
+         
+
           {/* Cart Icon */}
-          <IconButton
-            color="inherit"
-            onClick={() => handelRouter("/cart" )}
-          >
+          <IconButton color="inherit" onClick={() => handelRouter("/cart")}>
             <ShoppingCartIcon />
             {cartItemCount > 0 && <span>({cartItemCount})</span>}
           </IconButton>
@@ -78,14 +103,13 @@ export default function Header() {
               open={mobileMenuOpen}
               onClose={() => setMobileMenuOpen(false)}
               sx={{
-                width: '50%', 
-                '& .MuiDrawer-paper': {
-                  width: '50%',
+                width: "50%",
+                "& .MuiDrawer-paper": {
+                  width: "50%",
                 },
               }}
-               
             >
-              <List >
+              <List>
                 <ListItem button onClick={() => handleMenuItemClick("/blogs")}>
                   Blogs
                 </ListItem>
