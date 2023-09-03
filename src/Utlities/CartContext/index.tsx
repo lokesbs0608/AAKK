@@ -13,7 +13,11 @@ export const CartProvider = ({ children }: any) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const addItemToCart = (item: any) => {
-    setCartItems((prevItems): any => [...prevItems, item]);
+    // const AlreadyExist= cartItems.some((cartItem)=>cartItem.id===item.id)
+    // if(!AlreadyExist){
+
+      setCartItems((prevItems): any => [...prevItems, item]);
+    // }
   };
 
   const removeItemFromCart = (itemId: any) => {

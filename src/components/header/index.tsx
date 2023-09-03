@@ -16,12 +16,16 @@ import ListItem from "@mui/material/ListItem";
 import {
   Button,
   Container,
+  Divider,
   Hidden,
   InputAdornment,
+  InputBase,
+  Paper,
   TextField,
 } from "@mui/material";
 import { useUser } from "@/Utlities/UserContext";
 import SearchIcon from "@mui/icons-material/Search";
+import DirectionsIcon from "@mui/icons-material/Directions";
 
 export default function Header() {
   const { totalUniqueItems }: any = useCart();
@@ -53,35 +57,30 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{ backgroundColor: "#003366" }} position="static">
         <Toolbar>
-          <Typography className="flex " variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <div onClick={() => handelRouter("/")} >
+          <Typography
+            className="flex "
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            <div onClick={() => handelRouter("/")}>
               A<sup>2</sup>K<sup>2</sup>
-          </div>
-         
+            </div>
           </Typography>
-          <div className="flex justify-center md:mr-24 ml-4 p-2 h-18" style={{width:"600px"}}>
-          <TextField 
-                id=""
-                type="search"
-                label="Search"
-               
-                sx={{
-                  background: "white",
-                  borderRadius: "5px",
-                  marginLeft: "1rem",
-                  
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                }}
-            fullWidth />
+          <div
+            className="flex justify-center md:mr-24 ml-4  "
+            style={{ width: "700px" }}
+          >
+            <Paper
+              component="form"
+              sx={{ display: "flex", alignItems: "center"}}
+            >
+              <InputBase sx={{ ml: 1 }} placeholder="Search " />
+              <IconButton type="button" aria-label="search">
+                <SearchIcon />
+              </IconButton>
+            </Paper>
           </div>
-         
-         
 
           {/* Cart Icon */}
           <IconButton color="inherit" onClick={() => handelRouter("/cart")}>

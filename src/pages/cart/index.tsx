@@ -7,17 +7,30 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useCart } from "../../Utlities/CartContext/index";
+import {useUser} from '../../Utlities/UserContext'
+import { useRouter } from "next/router";
+
+
+
 
 const Cart = () => {
     const { cartItems, removeItemFromCart }:any = useCart();
+     const {user} =useUser();
 
+
+     const router =useRouter()
+
+    const handelbuy=(path:any)=>{
+      router.push(path)
+
+    }
   return (
     
       <div
         style={{ minWidth: "300px", maxWidth: "1200px" }}
         className="mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center pl-12"
       >
-        <h1  className="text-center text-warn" style={{}}>{cartItems.length===0?'No cart Items':''}</h1>
+        {cartItems.length===0 && (<h1  className="text-center text-warn" style={{}}>{cartItems.length===0?'No cart Items':''}</h1>)}
        
         {cartItems?.map((item: any) => {
           return (
@@ -28,8 +41,8 @@ const Cart = () => {
               <div>
                 <a href="#">
                   <img
-                    className="p-8 rounded-t-lg w-full "
-                    style={{ height: "25rem" }}
+                    className=" rounded-t-lg w-full "
+                    style={{ height: "8rem" }}
                     src={item.image}
                     alt="product image"
                   />
@@ -96,10 +109,15 @@ const Cart = () => {
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
                    $ {item.price}
                   </span>
-
+                  <a
+                    onClick={()=>handelbuy(`${user?'#':'./signin'}`)}
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Buy 
+                  </a>
                   <a
                     onClick={() => removeItemFromCart(item.id)}
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Remove
                   </a>

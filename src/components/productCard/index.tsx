@@ -34,80 +34,50 @@ export default function ImgMediaCard(props: any) {
   };
 
   const handelAddToCart = (item: any) => {
-    addItemToCart(item);
-    console.log(item);
+    const AleadyExist= cartItems.some((CartItem:any)=>CartItem.id===item.id)
+    if(!AleadyExist){
+
+      addItemToCart(item);
+    }else{
+      alert('Item Already in Your Cart')
+    }
+      
+
+    
   };
 
   const handelBuyNow = (path: any) => {
     router.push(path);
   };
 
+  const handelProductNavigation=(id:string)=>{
+   router.push(`/products/${id}`)
+
+
+  }
   
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
   return (
-    <div className="mx-auto pl-4 md:p-0 relative" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-      
-      <div className="p-4 my-4 flex felx-wrap sticky top-0 " style={{backgroundColor:"gray", color:"black",}}>
-       <Hidden lgDown>
-        
-        {[1,2,3,4,5,6].map(item=>(
-        <div className="px-12" key={item}>
-
-          <Selection key={item}/>
-        </div>
-       ))}
-        
-        </Hidden>
-        <div>
-        <div>
-        <Hidden lgUp>
-          <IconButton edge="end" color="inherit" aria-label="menu" onClick={toggleMobileMenu}>
-            <MenuIcon />
-          </IconButton>
-          {/* Drawer for Mobile Menu */}
-          <Drawer
-            anchor="right"
-            open={mobileMenuOpen}
-            onClose={() => setMobileMenuOpen(false)}
-            sx={{
-              width: '50%',
-              '& .MuiDrawer-paper': {
-                width: '50%',
-              },
-            }}
-          >
-            <List>
-              {[1,2,3,4,5,6].map((menuItem,index) => (
-                <ListItem button >
-                  <Selection key={index} />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
-        </Hidden>
-      </div>
-        </div>
-      </div>
-     
-      
+    <div className="mx-auto pl-4 md:p-0 " style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <div className=" grid  grid-cols-1 md:grid-cols-4  gap-5">
         {props.data?.map((item: any) => {
           return (
             <div
               key={item.id}
-              className="w-full flex col-4  grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              onClick={()=>handelProductNavigation(item.id)}
+              className=" flex col-4  grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
-              <a href="#">
+             
                 <img
-                  className="p-8 rounded-t-lg w-full "
-                  style={{ height: "25rem" }}
+                  className="p-0 rounded-t-lg w-full "
+                  style={{ height: "8rem" }}
                   src={item.image}
                   alt="product image"
                 />
-              </a>
+              
               <div className="px-5 pb-5">
                 <a href="#">
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -116,7 +86,7 @@ export default function ImgMediaCard(props: any) {
                 </a>
                 <div className="flex items-center mt-2.5 mb-5">
                   <svg
-                    className="w-4 h-4 text-yellow-300 mr-1"
+                    className="w-4 h-2 text-yellow-300 mr-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -164,19 +134,19 @@ export default function ImgMediaCard(props: any) {
                     4.0
                   </span>
                 </div>
-                <div className="flex flex-wrap items-center justify-between">
+                <div className="flex  items-center justify-between">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
                     {item.price}
                   </span>
                   <a
-                    onClick={() => handelBuyNow(`${user ? "/" : "/signin"}`)}
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => handelBuyNow(`${user ? "/checkout" : "/signin"}`)}
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Buy Now
                   </a>
                   <a
                     onClick={() => handelAddToCart(item)}
-                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Add to Cart
                   </a>
