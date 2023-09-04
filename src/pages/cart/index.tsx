@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -14,12 +14,17 @@ import Delete from "@mui/icons-material/Delete";
 const Cart = () => {
   const { cartItems, removeItemFromCart }: any = useCart();
   const { user } = useUser();
+  const [totalAmount,setTotalAmount]=useState()
 
   const router = useRouter();
   console.log(cartItems);
   const handelbuy = (path: any) => {
     router.push(path);
   };
+  const getTotalPrice=(price:any)=>{
+    
+
+  }
   return (
     <div className="flex gap-12">
       <div >
@@ -84,6 +89,7 @@ const Cart = () => {
             <ListItem key={product.title} sx={{ py: 1, px: 0 }}>
               <ListItemText primary={product.title} secondary={product.title} />
               <Typography variant="body2">{product.price}</Typography>
+
             </ListItem>
           ))}
           </div>

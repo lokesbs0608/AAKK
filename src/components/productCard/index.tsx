@@ -55,12 +55,9 @@ export default function ImgMediaCard(props: any) {
   //   router.push(path);
   // };
 
-  const handelProductNavigation=(id:string,event:any,item:any)=>{
-    event.preventDefault();
-   router.push(`/products/${id}?data=${encodeURIComponent(JSON.stringify(item))}`)
-   
-
-
+  const handelProductNavigation=(event:any,item:any)=>{
+  console.log(item)
+   router.push(`/products/${item.id}?data=${encodeURIComponent(JSON.stringify(item))}`)
   }
   
 
@@ -74,7 +71,7 @@ export default function ImgMediaCard(props: any) {
           return (
             <div
               key={item.id}
-              onClick={(e)=>handelProductNavigation(item.id,e,item)}
+              onClick={(e)=>handelProductNavigation(e,item)}
               className=" flex col-4  grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
              
