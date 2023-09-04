@@ -11,7 +11,7 @@ const ProductDetails = () => {
  const { addItemToCart, cartItems }: any = useCart();
  const { user }: any = useUser();
 
-const ProductData=JSON?.parse(data)
+const ProductData=data?.JSON.parse(data)
 console.log(ProductData)
 useEffect(()=>{
     setPrvImage(ProductData.images[0])
