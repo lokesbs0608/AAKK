@@ -38,6 +38,9 @@ export default function Header() {
   }, [totalUniqueItems]);
 
   const router = useRouter();
+ const hidePath='./';
+ const hideSearch=hidePath.includes(router.pathname)
+
   const handelRouter = (path: string) => {
     router.push(path);
   };
@@ -69,17 +72,17 @@ export default function Header() {
           </Typography>
           <div
             className="flex justify-center md:mr-24 ml-4  "
-            style={{ width: "700px" }}
+            style={{}}
           >
-            <Paper
+           {hideSearch && (<Paper className="  "
               component="form"
-              sx={{ display: "flex", alignItems: "center"}}
+              sx={{ display: "flex", alignItems: "center" }}
             >
-              <InputBase sx={{ ml: 1 }} placeholder="Search " />
-              <IconButton type="button" aria-label="search">
+              <InputBase sx={{ ml: 1 }} placeholder="Search " fullWidth />
+              <IconButton type="button" aria-label="search" >
                 <SearchIcon />
               </IconButton>
-            </Paper>
+            </Paper>)}
           </div>
 
           {/* Cart Icon */}
