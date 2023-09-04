@@ -27,7 +27,7 @@ const ProductDetails = () => {
   useEffect(() => {
     if (data) {
         setProductData((prev) => ({ ...prev, ...JSON.parse(data) }));
-        console.log(ProductData,'>>>>>>>>>')
+       
       
     } else {
       return;
@@ -43,7 +43,9 @@ const ProductDetails = () => {
   const handelAddToCart = (item: any) => {
     const AleadyExist = cartItems.some(
       (CartItem: any) => CartItem.id === item.id
+     
     );
+    
     if (!AleadyExist) {
       addItemToCart(item);
     } else {
@@ -60,7 +62,7 @@ const ProductDetails = () => {
     }
   };
   return (
-    <div style={{}}>
+    <div className="pl-6" style={{}}>
       <div
         className="mx-auto flex  gap-12  justify-center items-center"
         style={{ maxWidth: "1200px", margin: "0 auto", background: "white" }}
@@ -70,7 +72,7 @@ const ProductDetails = () => {
             className="flex gap-4 md:flex-row flex-col-reverse mt-4 "
             style={{ height: "25rem" }}
           >
-            <div className="grid grid-cols-4 md:grid-cols-1 mt-12 md:mt-0 ">
+            <div className="grid grid-cols-4 gap-2 md:grid-cols-1 mt-12 md:mt-0 ">
               {data &&
                 ProductData?.images?.map((item: string, index: number) => (
                   <img
@@ -79,20 +81,21 @@ const ProductDetails = () => {
                     onClick={() => handelPrevImages(item)}
                     style={{
                       objectFit: "contain",
-                      height: "5rem",
-                      width: "5rem",
+                      height: "3rem",
+                      width: "6rem",
+                     
                     }}
                   />
                 ))}
             </div>
 
-            <div className="" style={{ height: "20rem" }}>
+            <div className="" style={{ height: "30rem" }}>
               <img
                 src={PrvImage}
                 style={{
                   objectFit: "contain",
-                  width: "40rem",
-                  height: "30rem",
+                  width: "50rem",
+                  height: "20rem",
                 }}
                 alt=""
               />

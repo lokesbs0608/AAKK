@@ -21,6 +21,7 @@ const Cart = () => {
   const handelbuy = (path: any) => {
     router.push(path);
   };
+  console.log(cartItems)
   const getTotalPrice=(price:any)=>{
     
 
