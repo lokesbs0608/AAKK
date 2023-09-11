@@ -1,0 +1,12 @@
+.Scroll_container::-webkit-scrollbar {
+    width: 0.2rem; /* Set the width to a very small value */
+  }
+  
+  .Scroll_containerntainer::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Hide the scrollbar thumb */
+  }
+  
+  /* Hide the scrollbar in Firefox */
+  .Scroll_container {
+    scrollbar-width: none;
+  }

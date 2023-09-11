@@ -11,7 +11,7 @@ interface CartItem {
 
 export const CartProvider = ({ children }: any) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
- const [TotalPrice,setTotalPrice]=useState()
+ const [TotalPrice,setTotalPrice]=useState(0)
 
   const addItemToCart = (item: any) => {
     // const AlreadyExist= cartItems.some((cartItem)=>cartItem.id===item.id)
@@ -37,18 +37,18 @@ export const CartProvider = ({ children }: any) => {
     const uniqueItems = new Set(cartItems);
     return uniqueItems.size;
   };
+ 
+ useEffect(()=>{
+  let total=0;
+  for(let i=0;i < cartItems.length; i++){
+    const price = parseFloat(cartItems[i].price);
+       total = total+price
+       
+  }
+setTotalPrice(total)
 
-  // useEffect(() => {
-  //   // Calculate the total price whenever cartItems changes
-  //   const calculatedTotalPrice = cartItems.reduce(
-  //     (total, item) => total + parseFloat(item.price),
-  //     0
-  //   );
-
-  //   // Set the calculated total price to state
-  //   setTotalPrice(calculatedTotalPrice);
-  // }, [cartItems]);
-  // console.log(calculatedTotalPrice)
+ },[cartItems])
+ 
 
   return (
     <CartContext.Provider
@@ -58,6 +58,7 @@ export const CartProvider = ({ children }: any) => {
         removeItemFromCart,
         clearCart,
         totalUniqueItems,
+        TotalPrice
       }}
     >
       {children}

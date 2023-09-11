@@ -3,149 +3,345 @@
     "id": 1,
     "title": "ANTIQUE Jamki Sequence",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Jamki Sequence",
+    "subcategory": "Jamki / Sequence",
     "size": ["10gm pack", "20gm pack"],
-    "color": ["Gold", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "color": ["Gold"],
+    "price": [15, 30],
     "rating": 3.5,
     "images": [
       "https://www.eshwarshop.com/cdn/shop/products/bIGjAMKI_1024x1024@2x.jpg?v=1602509422",
       "https://www.eshwarshop.com/cdn/shop/products/j5_180x.jpg?v=1614287614",
       "https://www.eshwarshop.com/cdn/shop/products/J13_180x.jpg?v=1614289300",
       "https://www.eshwarshop.com/cdn/shop/products/J10_180x.jpg?v=1614288789"
-    ],
-    "price":"200"
+    ]
   },
   {
     "id": 2,
-    "title": "Jute Thread for Art & Craft",
+    "title": "silk threads",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Woolen Threads",
+    "subcategory": "Art Silk thread",
+    "color": ["All colors Available"],
     "size": [],
-    "color": ["Gold", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "price": [25],
     "rating": 3.2,
     "images": [
       "https://www.eshwarshop.com/cdn/shop/products/jutethread_1024x1024@2x.jpg?v=1602513360",
       "https://www.eshwarshop.com/cdn/shop/products/jutethread1_110x110@2x.jpg?v=1602513362",
       "https://www.eshwarshop.com/cdn/shop/products/ad3376ac-f4d3-4826-b196-6b55a8d378fd_1024x1024@2x.jpg?v=1602511079",
       "https://www.eshwarshop.com/cdn/shop/products/cac3ad28-d436-44eb-8dcf-244e55c49e87_110x110@2x.jpg?v=1602511079"
-    ],
-    "price":"200"
+    ]
   },
   {
     "id": 3,
     "title": "Premium Quality Lakshmi Coin",
     "category": "Aari & Embroidery Materials",
     "subcategory": "Lakshmi Coin",
-    "size": [],
-    "color": ["Gold", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "size": ["10gm pack", "20gm pack"],
+    "color": ["Gold", "Silver" , "Copper"],
+    "price": [15, 30],
     "rating": 3.2,
     "images": [
       "https://www.eshwarshop.com/cdn/shop/products/131274c8-f4d2-42ef-ad03-7e5e86c51193_FILEminimizer_1024x1024@2x.jpg?v=1602510883",
       "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/1_2eca4f90-37a8-4224-ac71-a70d0515d66e_180x.jpg?v=1610110032",
       "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/LCA03_180x.jpg?v=1602508256"
-    ],
-    "price":"200"
+    ]
   },
   {
     "id": 4,
-    "title": "Zardhosi Light Pink",
+    "title": "Zardhosi",
     "category": "Aari & Embroidery Materials",
     "subcategory": "Zardhosi",
-    "size": [],
-    "color": ["pink", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "size": ["50 grams"],
+    "color": ["Gold", "Silver", "Copper", "Antique", "Gold", "Pink"],
+    "price": [80],
     "rating": 3.2,
     "images": [
       "https://www.eshwarshop.com/cdn/shop/products/WhatsAppImage2020-06-13at23.36.04_1_1024x1024@2x.jpg?v=1602511315",
       "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/fe290ed6-326c-45cd-8b85-b5f975018882_360x.jpg?v=1602512184"
-    ],
-    "price":"200"
+    ]
   },
   {
     "id": 5,
     "title": "Aari Work Stand, Aari Embroidery Frame Stand, Maggam Work",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Beads And Pearls",
-    "size": ["10 inches", "20 inches", "30 inches"],
-    "color": ["pink", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "subcategory": "Aari work tools",
+    "size": ["18 Inches"],
+    "color": [],
+    "price": [450],
     "rating": 3.2,
     "images": [
       "https://www.eshwarshop.com/cdn/shop/products/9_1024x1024@2x.jpg?v=1602505717",
-      "https://www.eshwarshop.com/cdn/shop/products/2_110x110@2x.jpg?v=1602505717",
-      "https://www.eshwarshop.com/cdn/shop/products/5_110x110@2x.jpg?v=1602505717"
-    ],
-    "price":"300"
+      "https://www.eshwarshop.com/cdn/shop/products/10_180x.jpg?v=1614288473",
+      "https://www.eshwarshop.com/cdn/shop/products/8_180x.jpg?v=1614288623"
+    ]
   },
   {
     "id": 6,
-    "title": "Feathers for Dream Catchers / Craft work",
+    "title": "Aari Needles (Big & Small Sizes)",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Feathers And Laces",
-    "size": [],
-    "color": ["pink", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "subcategory": "Aari Needles",
+    "size": ["Big", "Small"],
+    "color": [],
+    "price": [50, 30],
     "rating": 3.2,
     "images": [
-      "https://www.eshwarshop.com/cdn/shop/products/1615877635241_1024x1024@2x.jpg?v=1615877692",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/5_a5bd7706-c32b-4580-a8e5-7e87063c2979_180x.jpg?v=1607955102"
-    ],
-    "price":"200"
+      "https://www.eshwarshop.com/cdn/shop/products/28_1024x1024@2x.jpg?v=1602511909",
+      "https://www.eshwarshop.com/cdn/shop/products/26_180x.jpg?v=1614288391",
+      "https://www.eshwarshop.com/cdn/shop/products/29_180x.jpg?v=1614288429"
+    ]
   },
   {
     "id": 7,
-    "title": "Aari Work Pendant For Aari Work/ Mangam Work- Model",
+    "title": "Aari Silk Thread",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Pendant For Aari Work",
-    "size": ["Large", "Small", "Medium"],
-    "color": ["Gold", "Maroon", "Silver", "White", "Orange", "Rani Pink"],
+    "subcategory": "Silk Thread",
+    "size": ["Big Spool", "Small Spool"],
+    "color": ["All colors Available"],
+    "price": [35, 20],
     "rating": 3.2,
     "images": [
-      "https://www.eshwarshop.com/cdn/shop/products/WhatsAppImage2022-02-18at11.34.08PM_1_1024x1024@2x.jpg?v=1645208682",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/8_41ca829a-bebc-4ae7-ab21-388cb3cf348f_360x.jpg?v=1657285160"
-    ],
-    "price":"400"
+      "https://www.eshwarshop.com/cdn/shop/products/SILK_1024x1024@2x.jpg?v=1602511087",
+      "https://www.eshwarshop.com/cdn/shop/products/silk_110x110@2x.jpg?v=1602509150"
+    ]
   },
   {
     "id": 8,
-    "title": "Cream Color Premium Quality Pearl Beads",
+    "title": "Aari Stand with LED Light",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Beads",
-    "size": ["Large", "Small", "Medium"],
-    "color": ["Cream", "White"],
+    "subcategory": "Aari Stand",
+    "size": ["18 Inches"],
+    "color": [],
+    "price": [1350],
     "rating": 3.2,
     "images": [
-      "https://www.eshwarshop.com/cdn/shop/products/creamlct_1024x1024@2x.jpg?v=1602512397",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/PearlBeads_180x.jpg?v=1602512393",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/PearlBeads_60ae6b43-ca12-476b-bcf6-9975f816f4e8_180x.jpg?v=1629387432"
-    ],
-    "price":"500"
+      "https://www.eshwarshop.com/cdn/shop/products/21_1024x1024@2x.jpg?v=1602505785",
+      "https://www.eshwarshop.com/cdn/shop/products/22_180x.jpg?v=1614288382",
+      "https://www.eshwarshop.com/cdn/shop/products/21_180x.jpg?v=1614288368"
+    ]
   },
   {
     "id": 9,
-    "title": "Sugar Bead Antique",
+    "title": "Aari Plastic Hoop",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Sugar Beads",
-    "size": ["10gm pack", "20gm pack"],
-    "color": ["Gold", "Black", "Dark Gold"],
+    "subcategory": "Aari Hoop",
+    "size": ["12 Inches", "14 Inches"],
+    "color": [],
+    "price": [160, 180],
     "rating": 3.2,
     "images": [
-      "https://www.eshwarshop.com/cdn/shop/products/71eagIRm4JL._SL1200_1024x1024@2x.jpg?v=1602834650",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/15_154be3d4-d32e-42b7-a82e-b1fd97fe6c1b_360x.jpg?v=1613743467",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/BIG_20BLK_73d18636-d460-4ddc-8809-28644a4d02a9_180x.jpg?v=1602509154"
-    ],
-    "price":"200"
+      "https://www.eshwarshop.com/cdn/shop/products/AARIHOOP_1024x1024@2x.jpg?v=1602511923",
+      "https://www.eshwarshop.com/cdn/shop/products/AARIHOOP_180x.jpg?v=1614288280",
+      "https://www.eshwarshop.com/cdn/shop/products/aarihoop1_180x.jpg?v=1614288292"
+    ]
   },
   {
     "id": 10,
-    "title": "Embroidery/Dress Designs/Meena Beads",
+    "title": "Aari Tapes",
     "category": "Aari & Embroidery Materials",
-    "subcategory": "Embroidery",
-    "size": ["10gm pack", "20gm pack"],
-    "color": ["Gold", "Black", "Dark Gold"],
+    "subcategory": "Aari Tapes",
+    "size": ["2 Meters", "5 Meters"],
+    "color": ["Red", "Green", "Blue", "Yellow", "Pink"],
+    "price": [20, 40],
     "rating": 3.2,
     "images": [
-      "https://www.eshwarshop.com/cdn/shop/products/e3e21c42-e70e-41f6-9123-0fc358135e65_1024x1024@2x.jpg?v=1602512043",
-      "https://cdn.shopify.com/s/files/1/0373/6967/5907/products/6bde86a2-9b9e-434c-b0fb-8d78a0d810e3_92ea6a62-a03d-4e6b-878b-4e08a45adee2_180x.jpg?v=1602512040",
-      "https://www.eshwarshop.com/cdn/shop/products/0acf9faa-adcf-4d07-a36a-33ff6acaff92_1024x1024@2x.jpg?v=1602511989"
-    ],
-    "price":"200"
+      "https://www.eshwarshop.com/cdn/shop/products/75_1024x1024@2x.jpg?v=1602505689",
+      "https://www.eshwarshop.com/cdn/shop/products/76_180x.jpg?v=1614288422",
+      "https://www.eshwarshop.com/cdn/shop/products/74_180x.jpg?v=1614288437"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Aari Threads",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Threads",
+    "size": ["20 grams"],
+    "color": ["All colors Available"],
+    "price": [25],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/22_1024x1024@2x.jpg?v=1602505643",
+      "https://www.eshwarshop.com/cdn/shop/products/22_180x.jpg?v=1614288297",
+      "https://www.eshwarshop.com/cdn/shop/products/23_180x.jpg?v=1614288297"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Aari Work Beads",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Beads",
+    "size": ["8mm", "6mm"],
+    "color": ["All colors Available"],
+    "price": [20, 15],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/beads_1024x1024@2x.jpg?v=1602505694",
+      "https://www.eshwarshop.com/cdn/shop/products/beads_180x.jpg?v=1614288299",
+      "https://www.eshwarshop.com/cdn/shop/products/beads1_180x.jpg?v=1614288301"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Aari Work Beads Mix Colors",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Beads",
+    "size": ["Mix Colors"],
+    "color": ["All colors Available"],
+    "price": [35],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/beadsmix_1024x1024@2x.jpg?v=1602505702",
+      "https://www.eshwarshop.com/cdn/shop/products/beadsmix_180x.jpg?v=1614288304",
+      "https://www.eshwarshop.com/cdn/shop/products/beadsmix1_180x.jpg?v=1614288306"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Aari Work Crochet",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Crochet",
+    "size": ["1mm", "1.25", "1.5mm", "1.75"],
+    "color": ["All colors Available"],
+    "price": [15],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/CROCHIE_1024x1024@2x.jpg?v=1602512457",
+      "https://www.eshwarshop.com/cdn/shop/products/crochet_180x.jpg?v=1614288310",
+      "https://www.eshwarshop.com/cdn/shop/products/crochet1_180x.jpg?v=1614288313"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Aari Work Ganapathy face",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Face",
+    "size": ["15mm", "20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [30, 35, 40, 45, 50, 60, 70, 80],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/GANAPATHYFACE_1024x1024@2x.jpg?v=1602512521",
+      "https://www.eshwarshop.com/cdn/shop/products/ganapathy_180x.jpg?v=1614288326",
+      "https://www.eshwarshop.com/cdn/shop/products/ganapathy1_180x.jpg?v=1614288330"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Aari Work Jumki",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Jumki",
+    "size": ["15mm", "20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [20, 25, 30, 35, 40, 45, 50, 60],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/jumkis_1024x1024@2x.jpg?v=1602505862",
+      "https://www.eshwarshop.com/cdn/shop/products/jumki_180x.jpg?v=1614288334",
+      "https://www.eshwarshop.com/cdn/shop/products/jumki1_180x.jpg?v=1614288340"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Aari Work Leaf",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Leaf",
+    "size": ["20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [25, 30, 35, 40, 45, 50, 60],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/leaf_1024x1024@2x.jpg?v=1602505903",
+      "https://www.eshwarshop.com/cdn/shop/products/leaf_180x.jpg?v=1614288347",
+      "https://www.eshwarshop.com/cdn/shop/products/leaf1_180x.jpg?v=1614288352"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Aari Work Lock",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Lock",
+    "size": ["20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [20, 25, 30, 35, 40, 45, 50],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/LOCK_1024x1024@2x.jpg?v=1602511996",
+      "https://www.eshwarshop.com/cdn/shop/products/lock_180x.jpg?v=1614288357",
+      "https://www.eshwarshop.com/cdn/shop/products/lock1_180x.jpg?v=1614288359"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Aari Work Mirror",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Mirror",
+    "size": ["5mm", "10mm", "15mm", "20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [25, 30, 35, 40, 45, 50, 60, 70, 80, 90],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/MIRROR_1024x1024@2x.jpg?v=1602512003",
+      "https://www.eshwarshop.com/cdn/shop/products/mirror_180x.jpg?v=1614288361",
+      "https://www.eshwarshop.com/cdn/shop/products/mirror1_180x.jpg?v=1614288363"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Aari Work Stone",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Stone",
+    "size":  ["5mm", "10mm", "15mm", "20mm", "25mm", "30mm", "35mm", "40mm", "45mm", "50mm"],
+    "color": ["All colors Available"],
+    "price": [30, 35, 40, 45, 50, 60, 70, 80, 90],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/STONE_1024x1024@2x.jpg?v=1602512010",
+      "https://www.eshwarshop.com/cdn/shop/products/stone_180x.jpg?v=1614288366",
+      "https://www.eshwarshop.com/cdn/shop/products/stone1_180x.jpg?v=1614288368"
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Aari Work Stone Box",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Stone Box",
+    "size": ["12 Compartments"],
+    "color": [],
+    "price": [300],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/STONEBOX_1024x1024@2x.jpg?v=1602512018",
+      "https://www.eshwarshop.com/cdn/shop/products/stonebox_180x.jpg?v=1614288372",
+      "https://www.eshwarshop.com/cdn/shop/products/stonebox1_180x.jpg?v=1614288374"
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Aari Work Stones Mix Colors",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Stones",
+    "size": ["Mix Colors"],
+    "color": ["All colors Available"],
+    "price": [60],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/stonesmix_1024x1024@2x.jpg?v=1602512027",
+      "https://www.eshwarshop.com/cdn/shop/products/stonesmix_180x.jpg?v=1614288376",
+      "https://www.eshwarshop.com/cdn/shop/products/stonesmix1_180x.jpg?v=1614288378"
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Aari Work Tassel",
+    "category": "Aari & Embroidery Materials",
+    "subcategory": "Aari Tassel",
+    "size": ["5 Inches", "6 Inches"],
+    "color": ["All colors Available"],
+    "price": [25, 30],
+    "rating": 3.2,
+    "images": [
+      "https://www.eshwarshop.com/cdn/shop/products/TASSEL_1024x1024@2x.jpg?v=1602512034",
+      "https://www.eshwarshop.com/cdn/shop/products/tassel_180x.jpg?v=1614288380",
+      "https://www.eshwarshop.com/cdn/shop/products/tassel1_180x.jpg?v=1614288382"
+    ]
   }
 ]

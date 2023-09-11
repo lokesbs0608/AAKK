@@ -2,5 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
 }
+module.exports = {
+  images: {
+    domains: ['www.eshwarshop.com'],
+  },
+};
 
-module.exports = nextConfig
+

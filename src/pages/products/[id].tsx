@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import { useCart } from "../../Utlities/CartContext/index";
 import { useUser } from "@/Utlities/UserContext";
 import Image from "next/image";
+
 const intial = {
   title: "",
-  price: "",
+  price: [],
   images: [],
   size: [],
   color: [],
@@ -23,29 +24,43 @@ const ProductDetails = () => {
   const { addItemToCart, cartItems }: any = useCart();
   const { user }: any = useUser();
   const [ProductData, setProductData] = useState(intial);
+  const [quantity ,setQuantity]=useState()
+  const [prize, setprize] = useState();
+ const [selectedcolor ,setselectedcolor] =useState();
+ const [selectedSize ,setselectedSize]=useState();
+
 
   useEffect(() => {
     if (data) {
-        setProductData((prev) => ({ ...prev, ...JSON.parse(data) }));
-       
-      
+      setProductData((prev) => ({ ...prev, ...JSON.parse(data) }));
     } else {
       return;
     }
   }, []);
-  useEffect(()=>{
+
+  useEffect(() => {
     setPrvImage(ProductData?.images[0]);
-  },[ProductData])
+    setprize(ProductData?.price[0]);
+    setselectedcolor(ProductData?.color[0] || "na");
+    setselectedSize(ProductData?.size[0]|| "na")
+  }, [ProductData]);
 
   const handelPrevImages = (path: string) => {
     setPrvImage(path);
   };
+  
+
   const handelAddToCart = (item: any) => {
+   
+    item.price=prize;
+    item.quantity=quantity;
+    item.selectedSize=selectedSize;
+    item.selectedcolor=selectedcolor;
+  console.log(item)
     const AleadyExist = cartItems.some(
       (CartItem: any) => CartItem.id === item.id
-     
     );
-    
+
     if (!AleadyExist) {
       addItemToCart(item);
     } else {
@@ -61,6 +76,22 @@ const ProductDetails = () => {
       router.push("/signin");
     }
   };
+
+  const handleSizeChange = (index: any) => {
+    setprize(ProductData.price[index]);
+  };
+  const handelQuantityCahnge=(value:any)=>{
+    setQuantity(value)
+  }
+ const handelSizeCahnge=(value:any)=>{
+  setselectedSize(value)
+ }
+ const handelColorChange=(value:any)=>{
+  setselectedcolor(value)
+ }
+  
+
+
   return (
     <div className="pl-6" style={{}}>
       <div
@@ -83,7 +114,6 @@ const ProductDetails = () => {
                       objectFit: "contain",
                       height: "3rem",
                       width: "6rem",
-                     
                     }}
                   />
                 ))}
@@ -109,48 +139,58 @@ const ProductDetails = () => {
             </div>
 
             <div className="my-4">
-              <p className="font-semibold text-2xl">
-                Price : {ProductData?.price}
-              </p>
+              <p className="font-semibold text-2xl">Price : &#8377; {prize}</p>
             </div>
             <div>
-              <div className="flex">
-                <p className="mr-4 font-semibold text-xl">color: </p>
+             
 
-                <select
-                  name="color"
-                  id="colour"
-                  style={{ width: "5rem", borderRadius: "4px", padding: "3px" }}
-                >
-                  {ProductData?.color?.map((Colour: string) => (
-                    <option value={Colour}>{Colour}</option>
-                  ))}
-                </select>
-              </div>
+                {Array.isArray(ProductData?.size) && ProductData.size.length > 0 &&(
+                <div className="flex">   <p className="mr-4 font-semibold text-xl">Size: </p><select
+                    name="size"
+                    id="size"
+                    style={{ width: "10rem", borderRadius: "4px", padding: "3px" }}
+                    onChange={(event) => { handleSizeChange(event.target.selectedIndex); handelSizeCahnge(event.target.value); } }
+                  >
+                    {ProductData?.size?.map((Sizes: string, index: number) => (
+                      <option key={index} value={Sizes}>
+                        {Sizes}
+                      </option>
+                    ))}
+                  </select>
+                  </div>
+
+                )}
+                
+              
+            {Array.isArray(ProductData.color) && ProductData.color.length>0 &&(
               <div className="flex mt-4 ">
-                <p className="mr-6 font-semibold text-xl">Size: </p>
-                <select
-                  name="color"
-                  id="color"
-                  style={{ width: "5rem", borderRadius: "4px", padding: "3px" }}
-                >
-                  {ProductData?.size?.map((sizes: string) => (
-                    <option value={sizes}>{sizes}</option>
-                  ))}
-                </select>
-              </div>
+              <p className="mr-4 font-semibold text-xl"> color:</p>
+              <select
+                name="color"
+                id="color"
+                style={{ width: "10rem", borderRadius: "4px", padding: "3px" }}
+                onChange={(event)=>handelColorChange(event.target.value)}
+              >
+                {ProductData?.color?.map((colour: string) => (
+                  <option value={colour}>{colour}</option>
+                ))}
+              </select>
+            </div>
+            )}
+              
             </div>
             <div>
               <div className="py-4">
                 Quantity:{" "}
                 <input
                   type="number"
-                  value=""
+                  
                   style={{
                     border: "1px solid black ",
-                    width: "5rem",
+                    width: "10rem",
                     borderRadius: "4px",
                   }}
+                  onChange={(e)=>handelQuantityCahnge(e.target.value)}
                 />
               </div>
             </div>

@@ -21,6 +21,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import Products from '../../pages/products/[id]'
 import { json } from "stream/consumers";
+import Image from "next/image";
 
 
 export default function ImgMediaCard(props: any) {
@@ -68,17 +69,20 @@ export default function ImgMediaCard(props: any) {
     <div className="mx-auto pl-4 md:p-0 " style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <div className=" grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-5">
         {props.data?.map((item: any) => {
+          // const img = "https://www.eshwarshop.com/cdn/shop/products/bIGjAMKI_1024x1024@2x.jpg?v=1602509422"
           return (
             <div
               key={item.id}
               onClick={(e)=>handelProductNavigation(e,item)}
               className=" flex col-4  grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
-             
-                <img
-                  className="p-0 rounded-t-lg w-full "
+                <Image
+                unoptimized
+                 className="w-full"
                   style={{ height: "12rem" }}
                   src={item.images[0]}
+                width={100}
+                height={100}
                   alt="product image"
                 />
               
@@ -140,7 +144,7 @@ export default function ImgMediaCard(props: any) {
                 </div>
                 <div className="flex  items-ceneter justify-end  m-1">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                  &#8377; {item.price}
+                  &#8377; {item.price[0]}
                   </span>
                   {/* <a
                     onClick={(e) => handelBuyNow(`${user ? "/checkout" : "/signin"}`,e)}
