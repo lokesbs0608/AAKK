@@ -12,26 +12,57 @@ import { useRouter } from "next/router";
 import Delete from "@mui/icons-material/Delete";
 import style from "./style.module.scss";
 
+
+
+
 const Cart = () => {
-  const { cartItems, removeItemFromCart }: any = useCart();
+  const { cartItems, removeItemFromCart ,UpdateFinalPrice}: any = useCart();
   const { TotalPrice }: any = useCart();
   const { user } = useUser();
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const [Quantity ,setQuantity]:any=useState()
+  const [indexOfItem,setindexOfItem]:any=useState();
+  const [decrmentQuantity,setDecrmentQunantity]:any=useState();
   const router = useRouter();
-  console.log(cartItems);
+  const [finalPrice,setfinalPrice]:any=useState()
+  const [items,setItems]=useState()
+
   const handelbuy = (path: any) => {
     router.push(path);
   };
   useEffect(() => {
     setTotalAmount(TotalPrice);
+   
   }, [TotalPrice]);
+
 
   const handelCheckuot = (path: any) => {
     
       router.push(path);
    
   };
+const incrementQuantityChange=(id:any,item:any)=>{
+  setindexOfItem(id)
+  
+  setQuantity(parseFloat(cartItems[id].quantity));
+  cartItems[id].quantity= parseFloat(cartItems[id].quantity)+1
+  const price=cartItems[id].price*parseFloat(cartItems[id].quantity)
+
+  UpdateFinalPrice(id,price)
+  // cartItems[id].Finalprice= cartItems[id].Finalprice*Quantity
+}
+const decrementQuantityChange=(id:any,item:any)=>{
+  setindexOfItem(id)
+
+
+  setQuantity((prev:any)=>prev-1)
+ 
+  cartItems[id].quantity=Quantity
+ const price = cartItems[id].Finalprice=cartItems[id].price*parseFloat(cartItems[id].quantity)
+ UpdateFinalPrice(id,price)
+}
+
+
 
   return (
     <div className="flex gap-6 flex-wrap md:flex-nowrap ">
@@ -48,7 +79,7 @@ const Cart = () => {
             </h1>
           )}
 
-          {cartItems?.map((item: any) => {
+          {cartItems?.map((item: any,index:any) => {
             return (
               <div
                 key={item.id}
@@ -71,12 +102,17 @@ const Cart = () => {
                       {item.title}
                     </p>
                   </a>
-
-                  <div className="flex items-center justify-between pt-8">
+                  <div className="mt-4 flex">
+                     <p>Quntity:</p>   
+                     <button onClick={()=> decrementQuantityChange(index,item)} className="border-2  border-solid "style={{width:"20px"}} disabled={item.quantity===0?true:false}>-</button>
+                        <span className="px-3">{item.quantity}</span>
+                        <button onClick={()=>incrementQuantityChange(index,item)} className="border-2 border-solid " style={{width:"20px"}}>+</button>
+                      </div>
+                  <div className="flex items-center justify-between pt-4">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                      $ {item.price}
+                    &#8377;{ item.Finalprice?item.Finalprice: item.price}
                     </span>
-
+                    
                     <a
                       onClick={() => removeItemFromCart(item.id)}
                       className="text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -122,7 +158,8 @@ const Cart = () => {
                 </div>
 
                 <div className="flex font-bold">
-                  <p> &#8377;{product.price}</p>
+                  <p> &#8377;{ product.Finalprice?product.Finalprice: ''}</p>
+                
                 </div>
               </div>
             ))}
@@ -131,7 +168,7 @@ const Cart = () => {
           <ListItem sx={{ py: 1, px: 0 }}>
             <ListItemText primary="Total" />
             <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-              &#8377; {totalAmount}
+            &#8377;{totalAmount }
             </Typography>
           </ListItem>
           <button

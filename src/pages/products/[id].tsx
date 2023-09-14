@@ -24,25 +24,50 @@ const ProductDetails = () => {
   const { addItemToCart, cartItems }: any = useCart();
   const { user }: any = useUser();
   const [ProductData, setProductData] = useState(intial);
-  const [quantity ,setQuantity]=useState()
-  const [prize, setprize] = useState();
+  const [quantity ,setQuantity]=useState(1)
+  const [prize, setprize] = useState(0);
  const [selectedcolor ,setselectedcolor] =useState();
  const [selectedSize ,setselectedSize]=useState();
+const [indexofSize,setIndexofSize]:any=useState(0)
+const [finalPrice,setFinalPrice]:any=useState()  
+const [priceUpdate,setPriceUpdate]=useState(false);
 
 
-  useEffect(() => {
+useEffect(() => {
     if (data) {
-      setProductData((prev) => ({ ...prev, ...JSON.parse(data) }));
+      localStorage.setItem("productData",data)
+      // setProductData((prev) => ({ ...prev, ...JSON.parse(data) }));
     } else {
       return;
     }
-  }, []);
+  }, [data]);
 
   useEffect(() => {
-    setPrvImage(ProductData?.images[0]);
-    setprize(ProductData?.price[0]);
-    setselectedcolor(ProductData?.color[0] || "na");
-    setselectedSize(ProductData?.size[0]|| "na")
+    // Check if window object is defined (client-side)
+    if (typeof window !== "undefined") {
+      // Use localStorage
+      const storedData = localStorage.getItem("productData");
+      if (storedData) {
+        setProductData(JSON.parse(storedData));
+     
+      }
+    } else {
+      // Handle server-side rendering or non-browser environment
+      // You can leave setProductData as null or initialize it differently
+    }
+  }, []);
+ 
+
+  useEffect(() => {
+    if (ProductData && ProductData.images && ProductData.images.length > 0) {
+      setPrvImage(ProductData?.images[0]);
+    }
+    if (ProductData && ProductData.price && ProductData.price.length > 0) {
+      setprize(ProductData.price[0]);
+    }
+    if (ProductData && ProductData.color && ProductData.color.length > 0) {
+      setselectedcolor(ProductData.color[0] || "na");
+    }
   }, [ProductData]);
 
   const handelPrevImages = (path: string) => {
@@ -56,7 +81,13 @@ const ProductDetails = () => {
     item.quantity=quantity;
     item.selectedSize=selectedSize;
     item.selectedcolor=selectedcolor;
-  console.log(item)
+    if(finalPrice){
+      item.Finalprice=finalPrice;
+    }else{
+
+      item.Finalprice=prize;
+    }
+  
     const AleadyExist = cartItems.some(
       (CartItem: any) => CartItem.id === item.id
     );
@@ -78,18 +109,31 @@ const ProductDetails = () => {
   };
 
   const handleSizeChange = (index: any) => {
+
     setprize(ProductData.price[index]);
+    setIndexofSize(index);
+    // setPriceUpdate(!priceUpdate)
+    if(quantity){
+      setFinalPrice(ProductData.price[index]*quantity)
+      cartItems.Finalprice=finalPrice;
+    }
   };
   const handelQuantityCahnge=(value:any)=>{
     setQuantity(value)
+    
+  
+      setFinalPrice(ProductData.price[indexofSize]*value)
+      cartItems.Finalprice=finalPrice;
+    
+    
   }
- const handelSizeCahnge=(value:any)=>{
+ const handelSizeChange=(value:any)=>{
   setselectedSize(value)
  }
  const handelColorChange=(value:any)=>{
   setselectedcolor(value)
  }
-  
+ 
 
 
   return (
@@ -103,7 +147,7 @@ const ProductDetails = () => {
             className="flex gap-4 md:flex-row flex-col-reverse mt-4 "
             style={{ height: "25rem" }}
           >
-            <div className="grid grid-cols-4 gap-2 md:grid-cols-1 mt-12 md:mt-0 ">
+            <div className="grid grid-cols-4 gap-4 md:grid-cols-1 mt-12 md:mt-0  h-12">
               {data &&
                 ProductData?.images?.map((item: string, index: number) => (
                   <img
@@ -111,8 +155,8 @@ const ProductDetails = () => {
                     src={item}
                     onClick={() => handelPrevImages(item)}
                     style={{
-                      objectFit: "contain",
-                      height: "3rem",
+                      objectFit: "cover",
+                      height: "4rem",
                       width: "6rem",
                     }}
                   />
@@ -139,7 +183,7 @@ const ProductDetails = () => {
             </div>
 
             <div className="my-4">
-              <p className="font-semibold text-2xl">Price : &#8377; {prize}</p>
+              <p className="font-semibold text-2xl">Price : &#8377;{finalPrice>0?finalPrice:prize}</p>
             </div>
             <div>
              
@@ -149,7 +193,7 @@ const ProductDetails = () => {
                     name="size"
                     id="size"
                     style={{ width: "10rem", borderRadius: "4px", padding: "3px" }}
-                    onChange={(event) => { handleSizeChange(event.target.selectedIndex); handelSizeCahnge(event.target.value); } }
+                    onChange={(event) => { handleSizeChange(event.target.selectedIndex); handelSizeChange(event.target.value);} }
                   >
                     {ProductData?.size?.map((Sizes: string, index: number) => (
                       <option key={index} value={Sizes}>
@@ -184,12 +228,14 @@ const ProductDetails = () => {
                 Quantity:{" "}
                 <input
                   type="number"
-                  
+                  // disabled={quantity < 1||quantity<0 }
                   style={{
                     border: "1px solid black ",
                     width: "10rem",
                     borderRadius: "4px",
                   }}
+                  min="0" 
+                  value={quantity}
                   onChange={(e)=>handelQuantityCahnge(e.target.value)}
                 />
               </div>
