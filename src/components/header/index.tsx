@@ -38,8 +38,8 @@ export default function Header() {
   }, [totalUniqueItems]);
 
   const router = useRouter();
- const hidePath='./';
- const hideSearch=hidePath.includes(router.pathname)
+  const hidePath = "./";
+  const hideSearch = hidePath.includes(router.pathname);
 
   const handelRouter = (path: string) => {
     router.push(path);
@@ -66,26 +66,27 @@ export default function Header() {
             component="div"
             sx={{ flexGrow: 1 }}
           >
-            <div onClick={() => handelRouter("/")}>
+            <div className="mr-auto" onClick={() => handelRouter("/")}>
               A<sup>2</sup>K<sup>2</sup>
             </div>
           </Typography>
-          <div
-            className="flex justify-center md:mr-24 ml-4  "
-            style={{}}
-          >
-           {hideSearch && (<Paper className="  "
-              component="form"
-              sx={{ display: "flex", alignItems: "center" }}
-            >
-              <InputBase sx={{ ml: 1 }} placeholder="Search " fullWidth />
-              <IconButton type="button" aria-label="search" >
-                <SearchIcon />
-              </IconButton>
-            </Paper>)}
+          <div className="flex justify-center md:mr-24 ml-4  " style={{}}>
+            {hideSearch && (
+              <Paper
+                className="  "
+                component="form"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <InputBase sx={{ ml: 1 }} placeholder="Search " fullWidth />
+                <IconButton type="button" aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </Paper>
+            )}
           </div>
 
           {/* Cart Icon */}
+          <div></div>
           <IconButton color="inherit" onClick={() => handelRouter("/cart")}>
             <ShoppingCartIcon />
             {cartItemCount > 0 && <span>({cartItemCount})</span>}
@@ -107,32 +108,80 @@ export default function Header() {
               onClose={() => setMobileMenuOpen(false)}
               sx={{
                 width: "50%",
+                padding: "5px",
                 "& .MuiDrawer-paper": {
                   width: "50%",
+                  backgroundColor: "#0033",
                 },
               }}
             >
-              <List>
-                <ListItem button onClick={() => handleMenuItemClick("/blogs")}>
+              <List className="" sx={{ backgroundColor: "#0033" }}>
+                <ListItem
+                  button
+                  onClick={() => handleMenuItemClick("/blogs")}
+                  sx={{
+                    backgroundColor: "#003366",
+                    marginTop: "5px",
+                    fontSize: "1rem", // Change the font size
+                    color: "#fff",
+                    border: "1px solid #333",
+                    borderRadius: "4px",
+                  }}
+                >
                   Blogs
                 </ListItem>
                 <ListItem
                   button
+                  sx={{
+                    backgroundColor: "#003366",
+                    marginTop: "5px",
+                    fontSize: "1rem", // Change the font size
+                    color: "#fff",
+                    border: "1px solid #333",
+                    borderRadius: "4px",
+                  }}
                   onClick={() => handleMenuItemClick("/courses")}
                 >
                   Courses
                 </ListItem>
-                <ListItem button onClick={() => handleMenuItemClick("/videos")}>
+                <ListItem
+                  button
+                  onClick={() => handleMenuItemClick("/videos")}
+                  sx={{
+                    backgroundColor: "#003366",
+                    marginTop: "5px",
+                    fontSize: "1rem", // Change the font size
+                    color: "#fff",
+                    border: "1px solid #333",
+                    borderRadius: "4px",
+                  }}
+                >
                   Videos
                 </ListItem>
                 <ListItem
                   button
+                  sx={{
+                    backgroundColor: "#003366",
+                    marginTop: "5px",
+                    fontSize: "1rem", // Change the font size
+                    color: "#fff",
+                    border: "1px solid #333",
+                    borderRadius: "4px",
+                  }}
                   onClick={() => handleMenuItemClick("/aboutus")}
                 >
                   About Us
                 </ListItem>
                 <ListItem
                   button
+                  sx={{
+                    backgroundColor: "#003366",
+                    marginTop: "5px",
+                    fontSize: "1rem", // Change the font size
+                    color: "#fff",
+                    border: "1px solid #333",
+                    borderRadius: "4px",
+                  }}
                   onClick={() => handleMenuItemClick("/aboutus")}
                 >
                   Account
@@ -142,7 +191,7 @@ export default function Header() {
           </Hidden>
           {/* Menu Items for Desktop */}
           <Hidden lgDown>
-            <div>
+            <div className="">
               <Button color="inherit" onClick={() => handelRouter("/blogs")}>
                 Blogs
               </Button>

@@ -30,7 +30,7 @@ const ProductDetails = () => {
  const [selectedSize ,setselectedSize]=useState();
 const [indexofSize,setIndexofSize]:any=useState(0)
 const [finalPrice,setFinalPrice]:any=useState()  
-const [priceUpdate,setPriceUpdate]=useState(false);
+
 
 
 useEffect(() => {
@@ -108,8 +108,8 @@ useEffect(() => {
     }
   };
 
-  const handleSizeChange = (index: any) => {
-
+  const handleSizeChange = (index: any,value:any) => {
+  setselectedSize(value)
     setprize(ProductData.price[index]);
     setIndexofSize(index);
     // setPriceUpdate(!priceUpdate)
@@ -127,9 +127,7 @@ useEffect(() => {
     
     
   }
- const handelSizeChange=(value:any)=>{
-  setselectedSize(value)
- }
+ 
  const handelColorChange=(value:any)=>{
   setselectedcolor(value)
  }
@@ -137,12 +135,12 @@ useEffect(() => {
 
 
   return (
-    <div className="pl-6" style={{}}>
+    <>
       <div
         className="mx-auto flex  gap-12  justify-center items-center"
         style={{ maxWidth: "1200px", margin: "0 auto", background: "white" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 p-8" style={{}}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 p-1 mt-12" style={{}}>
           <div
             className="flex gap-4 md:flex-row flex-col-reverse mt-4 "
             style={{ height: "25rem" }}
@@ -193,7 +191,7 @@ useEffect(() => {
                     name="size"
                     id="size"
                     style={{ width: "10rem", borderRadius: "4px", padding: "3px" }}
-                    onChange={(event) => { handleSizeChange(event.target.selectedIndex); handelSizeChange(event.target.value);} }
+                    onChange={(event) => { handleSizeChange(event.target.selectedIndex,event.target.value); } }
                   >
                     {ProductData?.size?.map((Sizes: string, index: number) => (
                       <option key={index} value={Sizes}>
@@ -278,7 +276,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

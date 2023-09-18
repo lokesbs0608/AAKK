@@ -38,12 +38,13 @@ export const CartProvider = ({ children }: any) => {
     return uniqueItems.size;
   };
 
-  const UpdateFinalPrice = (itemId: any, price: any) => {
+  const UpdateFinalPrice = (itemId: any, price: any,quantity:any) => {
     setCartItems((prev) => {
       const UpdateItems = [...prev];
       UpdateItems[itemId] = {
         ...UpdateItems[itemId],
         Finalprice: price,
+        quantity:quantity,
       };
       return UpdateItems;
     });
@@ -60,15 +61,10 @@ export const CartProvider = ({ children }: any) => {
     }
     setTotalPrice(total);
   }, [cartItems]);
+useEffect(()=>{
+  localStorage.setItem("TotalPrice",JSON.stringify(TotalPrice));
+},[TotalPrice])
 
-
-  useEffect(() => {
-    // Retrieve cart items from local storage when the component mounts
-    const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
   console.log(cartItems, "to check final update");
   return (
     <CartContext.Provider
