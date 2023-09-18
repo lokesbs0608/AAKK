@@ -25,15 +25,40 @@ const Cart = () => {
   const [decrmentQuantity,setDecrmentQunantity]:any=useState();
   const router = useRouter();
   const [finalPrice,setfinalPrice]:any=useState()
-  const [items,setItems]=useState()
+  const [items,setItems]:any=useState()
+
+
+  
+  const fetchCartData = () => {
+    // Fetch data from localStorage
+    const CartData = localStorage.getItem("cartItems");
+    if (CartData) {
+      // Parse and set the data
+      setItems(JSON.parse(CartData));
+    }
+  };
+
+  
+
+  const fetchTotalPrice=()=>{
+    const totalPrice=localStorage.getItem('TotalPrice')||"na";
+    setTotalAmount(JSON.parse(totalPrice))
+  }
+
+  useEffect(() => {
+    // Fetch data when the component is initially mounted
+    fetchCartData();
+    fetchTotalPrice()
+
+  }, []);
+
+console.log(items,"////")
+
 
   const handelbuy = (path: any) => {
     router.push(path);
   };
-  useEffect(() => {
-    setTotalAmount(TotalPrice);
-   
-  }, [TotalPrice]);
+ 
 
 
   const handelCheckuot = (path: any) => {
@@ -44,11 +69,16 @@ const Cart = () => {
 const incrementQuantityChange=(id:any,item:any)=>{
   setindexOfItem(id)
   
-  setQuantity(parseFloat(cartItems[id].quantity));
-  cartItems[id].quantity= parseFloat(cartItems[id].quantity)+1
-  const price=cartItems[id].price*parseFloat(cartItems[id].quantity)
+  setQuantity(parseFloat(items[id].quantity));
+  const Itemquantity=items[id].quantity= parseFloat(items[id].quantity)+1
+  // items[id].Finalprice=items[id].price*parseFloat(items[id].quantity)
+  const price=items[id].price*parseFloat(items[id].quantity)
 
-  UpdateFinalPrice(id,price)
+  UpdateFinalPrice(id,price,Itemquantity)
+  setTimeout(() => {
+    fetchCartData();
+    fetchTotalPrice()
+  }, 100);
   // cartItems[id].Finalprice= cartItems[id].Finalprice*Quantity
 }
 const decrementQuantityChange=(id:any,item:any)=>{
@@ -57,9 +87,13 @@ const decrementQuantityChange=(id:any,item:any)=>{
 
   setQuantity((prev:any)=>prev-1)
  
-  cartItems[id].quantity=Quantity
- const price = cartItems[id].Finalprice=cartItems[id].price*parseFloat(cartItems[id].quantity)
- UpdateFinalPrice(id,price)
+  items[id].quantity=Quantity
+ const price = items[id].Finalprice=items[id].price*parseFloat(items[id].quantity)
+ UpdateFinalPrice(id,price,Quantity)
+ setTimeout(() => {
+  fetchCartData();
+  fetchTotalPrice()
+}, 100);
 }
 
 
@@ -73,13 +107,13 @@ const decrementQuantityChange=(id:any,item:any)=>{
         <div
           className={` mx-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 justify-center pl-12 `}
         >
-          {cartItems.length === 0 && (
+          {/* {items?.length === 0 && (
             <h1 className="text-center text-warn" style={{}}>
               {cartItems.length === 0 ? "No cart Items" : ""}
             </h1>
-          )}
+          )} */}
 
-          {cartItems?.map((item: any,index:any) => {
+          {items?.map((item: any,index:any) => {
             return (
               <div
                 key={item.id}
@@ -90,7 +124,7 @@ const decrementQuantityChange=(id:any,item:any)=>{
                     <img
                       className=" rounded-t-lg w-full "
                       style={{ height: "12rem" }}
-                      src={item.images[0]}
+                      src={item.images && item.images.length > 0 ? item.images[0] : ''}
                       alt="product image"
                     />
                   </a>
@@ -114,7 +148,7 @@ const decrementQuantityChange=(id:any,item:any)=>{
                     </span>
                     
                     <a
-                      onClick={() => removeItemFromCart(item.id)}
+                      onClick={() => {removeItemFromCart(item.id);}}
                       className="text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                       style={{ backgroundColor: "#003366" }}
                     >
@@ -137,7 +171,7 @@ const decrementQuantityChange=(id:any,item:any)=>{
             className={style.Scroll_container}
             style={{ height: "450px", overflowY: "scroll" }}
           >
-            {cartItems.map((product: any) => (
+            {items?.map((product: any) => (
               <div className="flex justify-between items-start p-0.8 mt-6">
                 <div>
                   <h2 className="font-bold">{product.title}</h2>
@@ -148,7 +182,7 @@ const decrementQuantityChange=(id:any,item:any)=>{
                   </p>
                   <p>
                     <span className="font-semibold">Size:</span>(
-                    {product.selectedSize})
+                      {product.selectedSize ? product.selectedSize : (product.size && product.size.length > 0 ? product.size[0] : '')})
                   </p>
 
                   <p>
