@@ -18,7 +18,7 @@ import {
   TextField,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Products from '../../pages/products/[id]'
 import { json } from "stream/consumers";
 import Image from "next/image";
@@ -26,7 +26,7 @@ import Image from "next/image";
 
 export default function ImgMediaCard(props: any) {
 
-  const { addItemToCart, cartItems }: any = useCart();
+  const { addItemToCart, cartItems,search }: any = useCart();
   const { user }: any = useUser();
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,6 +35,8 @@ export default function ImgMediaCard(props: any) {
   const handleWhatsApp = () => {
     window.location.href = `https://api.whatsapp.com/send?phone=919003273189&text=${Message}`;
   };
+
+
 
   // const handelAddToCart = (item: any,event:any) => {
   //   event.stopPropagation();
@@ -68,7 +70,9 @@ export default function ImgMediaCard(props: any) {
   return (
     <div className="mx-auto pl-4 md:p-0 " style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <div className=" grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-5">
-        {props.data?.map((item: any) => {
+        {props.data?.filter((item:any)=>{
+         return search?.toLowerCase() === "" ? item : item?.title.toLowerCase().includes(search.toLowerCase());
+        }).map((item: any) => {
           // const img = "https://www.eshwarshop.com/cdn/shop/products/bIGjAMKI_1024x1024@2x.jpg?v=1602509422"
           return (
             <div

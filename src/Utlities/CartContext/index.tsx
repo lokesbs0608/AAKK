@@ -14,6 +14,11 @@ interface CartItem {
 export const CartProvider = ({ children }: any) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [TotalPrice, setTotalPrice] = useState(0);
+  const [search ,setsearch]:any=useState();
+
+  const SearchProduct=(value:any)=>{
+    setsearch(value);
+  }
 
   const addItemToCart = (item: any) => {
     // const AlreadyExist= cartItems.some((cartItem)=>cartItem.id===item.id)
@@ -65,7 +70,7 @@ useEffect(()=>{
   localStorage.setItem("TotalPrice",JSON.stringify(TotalPrice));
 },[TotalPrice])
 
-  console.log(cartItems, "to check final update");
+  console.log(search, "to check final update");
   return (
     <CartContext.Provider
       value={{
@@ -76,6 +81,8 @@ useEffect(()=>{
         totalUniqueItems,
         TotalPrice,
         UpdateFinalPrice,
+        SearchProduct,
+        search
       }}
     >
       {children}

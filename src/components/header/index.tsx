@@ -28,18 +28,20 @@ import SearchIcon from "@mui/icons-material/Search";
 import DirectionsIcon from "@mui/icons-material/Directions";
 
 export default function Header() {
-  const { totalUniqueItems }: any = useCart();
-  const [cartItemCount, setCartItemCount] = useState(totalUniqueItems);
 
+
+
+  const { totalUniqueItems,SearchProduct }: any = useCart();
+  const [cartItemCount, setCartItemCount] = useState(totalUniqueItems);
   const { User }: any = useUser();
+  const router = useRouter();
+  const hidePath = "./";
+  const hideSearch = hidePath.includes(router.pathname);
   // Update the cart item count when totalUniqueItems changes
   useEffect(() => {
     setCartItemCount(totalUniqueItems);
   }, [totalUniqueItems]);
 
-  const router = useRouter();
-  const hidePath = "./";
-  const hideSearch = hidePath.includes(router.pathname);
 
   const handelRouter = (path: string) => {
     router.push(path);
@@ -77,7 +79,7 @@ export default function Header() {
                 component="form"
                 sx={{ display: "flex", alignItems: "center" }}
               >
-                <InputBase sx={{ ml: 1 }} placeholder="Search " fullWidth />
+                <InputBase sx={{ ml: 1 }} placeholder="Search " onChange={(e)=>SearchProduct(e.target.value)} fullWidth />
                 <IconButton type="button" aria-label="search">
                   <SearchIcon />
                 </IconButton>

@@ -132,7 +132,7 @@ const Cart = () => {
                   </a>
                   <div className="mt-4 flex flex-row justify-start items-center">
                     <p>Quntity:</p>
-                    <div className="flex flex-col  md:flex-row">
+                    <div className="flex   md:flex-row">
                       <button
                         onClick={() => decrementQuantityChange(index, item)}
                         className="border-2  border-solid "
