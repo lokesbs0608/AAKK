@@ -10,6 +10,8 @@ const UserContext = createContext<any | null>(null);
 
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<any[] | null>(null);
+const [checkoutDetails,setcheckoutDetails]=useState([{}]);
+
 
   const login = (userData: any) => {
     setUser(userData);
@@ -19,8 +21,10 @@ export const UserProvider = ({ children }: any) => {
     setUser(null);
   };
 
+ 
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout ,checkoutDetails,setcheckoutDetails }}>
       {children}
     </UserContext.Provider>
   );

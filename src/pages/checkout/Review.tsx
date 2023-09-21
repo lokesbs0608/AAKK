@@ -13,6 +13,7 @@ export default function Review() {
 
   const {cartItems,TotalPrice}:any =useCart();
   const [total,settotal] = useState();
+  
 
   useEffect(() => {
   settotal(TotalPrice);
@@ -27,7 +28,7 @@ console.log(TotalPrice)
         {cartItems.map((product:any) => (
           <ListItem key={product.id} sx={{ py: 1, px: 0 }}>
             <ListItemText primary={product.title}  />
-            <Typography variant="body2">{product.price}</Typography>
+            <Typography variant="body2">{product.Finalprice}</Typography>
           </ListItem>
         ))}
         <ListItem sx={{ py: 1, px: 0 }}>
@@ -37,6 +38,7 @@ console.log(TotalPrice)
           </Typography>
         </ListItem>
       </List>
+     
 
     </div>
   );

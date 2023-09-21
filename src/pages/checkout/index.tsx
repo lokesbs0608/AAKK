@@ -14,6 +14,11 @@ import Typography from "@mui/material/Typography";
 import AddressForm from "./addressform";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useUser } from "@/Utlities/UserContext";
+import { useCart } from "../../Utlities/CartContext/index";
 
 function Copyright() {
   return (
@@ -43,6 +48,71 @@ function getStepContent(step: number) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const { checkoutDetails } = useUser();
+  const [userData, setuserData]: any = useState();
+  const router = useRouter();
+  const form: any = useRef();
+  const { cartItems ,TotalPrice }: any = useCart();
+
+  
+
+  useEffect(() => {
+    setuserData(checkoutDetails);
+  }, [checkoutDetails]);
+
+
+  // -----------------------------to send email to customer --------------------------------------------------------------------
+  function renderCartItemsToHTML(cartItems: any) {
+    if (!cartItems || cartItems.length === 0) {
+      return ""; // Return an empty string or handle the case when cartItems is empty
+    }
+    return cartItems
+      .map(
+        (product: any) =>
+          `<div className="flex  items-start ">
+       <div>
+         <h2 className="font-bold"><b>Product Name:</b>${product.title}</h2>
+         <p><span className="font-semibold"><b>Color:</b>></span>(${product.selectedcolor}) </p>
+         <p><span className="font-semibold"><b>Size:</b></span>(${product.selectedSize? product.selectedSize: product.size && product.size.length > 0? product.size[0]: ""})</p>
+         <p><span className="font-semibold">Quantity: </span>${product.quantity}</p>
+       </div><div className="flex font-bold"><p>Price: &#8377;${product.Finalprice ? product.Finalprice : ""}</p></div>
+     </div>`
+      ).join("");
+  }
+  const messageHTML = renderCartItemsToHTML(cartItems);
+  
+  const messageText = messageHTML.toString().replace(/<\/?[^>]+(>|$)/g, "");
+  const sendEmail = (e: any) => {
+    e.preventDefault();
+
+    const toEmail = userData ? userData.email : "fallback@example.com";
+    const FirstName=userData?.firstname;
+    const LastName=userData?.lastname;
+    const TotalToMail=TotalPrice;
+    const templateParams: any = {
+      to_email: toEmail,
+      from_name: `${FirstName} ${LastName}`,
+      message: messageText,
+      totalAmount:TotalToMail
+    };
+
+    emailjs
+      .send(
+        "service_x1emw59",
+        "template_y0id0ti",
+        templateParams,
+        "XvO6o578uYooKM_Gp"
+      )
+      .then((result) => {
+        console.log(result.text);
+        alert('Mail send Given to Account ')
+      })
+      .catch((error) => {
+        console.log(error.text);
+      });
+  };
+
+  // -----------------------------to send email to customer end here --------------------------------------------------------------------
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -52,6 +122,9 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
+  const handelBack = () => {
+    router.push("/cart");
+  };
   return (
     <div>
       <CssBaseline />
@@ -84,28 +157,47 @@ export default function Checkout() {
           ) : (
             <div>
               {getStepContent(activeStep)}
-              <Box sx={{ display: "flex justify-center ", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button className="mb-6" onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+              <Box
+                sx={{
+                  display: "flex  ",
+                  justifyContent: "space-between",
+                  alignContent: "center",
+                }}
+              >
+                {activeStep !== 0 ? (
+                  <Button
+                    className="mt-10"
+                    onClick={handleBack}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
+                    Back
+                  </Button>
+                ) : (
+                  <Button
+                    className="mt-10"
+                    onClick={handelBack}
+                    sx={{ mt: 3, ml: 1 }}
+                  >
                     Back
                   </Button>
                 )}
-                 {activeStep === steps.length - 1 ? 
-                <button
-                  className="text-center px-4 py-2 mt-12 "
-                  onClick={handleNext}
-                  style={{ backgroundColor: "#003366", color: "#fff" }}
-                >
-                 Place order
-                </button>:
-                   <button
-                   className="text-center w-full mt-10 "
-                   onClick={handleNext}
-                   style={{ backgroundColor: "#003366", color: "#fff" }}
-                 >
-                 Next
-                 </button>}
-                
+                {activeStep === steps.length - 1 ? (
+                  <button
+                    className="text-center px-4 py-2 mt-12 "
+                    onClick={(e) => sendEmail(e)}
+                    style={{ backgroundColor: "#003366", color: "#fff" }}
+                  >
+                    Place order
+                  </button>
+                ) : (
+                  <button
+                    className="text-center px-4 py-2 mt-10 "
+                    onClick={handleNext}
+                    style={{ backgroundColor: "#003366", color: "#fff" }}
+                  >
+                    Next
+                  </button>
+                )}
               </Box>
             </div>
           )}

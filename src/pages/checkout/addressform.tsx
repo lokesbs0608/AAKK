@@ -4,8 +4,25 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useUser } from '@/Utlities/UserContext';
+
 
 export default function AddressForm() {
+
+
+const {checkoutDetails ,setcheckoutDetails} =useUser()
+
+
+
+const handelChange=(event:any)=>{
+  setcheckoutDetails((prev: any)=>({
+   ...prev, [event.target.name]:event.target.value,
+}))
+
+}
+  
+
+console.log(checkoutDetails);
   return (
     <div>
       <Typography variant="h6" gutterBottom>
@@ -21,6 +38,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -32,6 +50,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
         <Grid item xs={12}>
@@ -43,8 +62,10 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
+        
         <Grid item xs={12}>
           <TextField
             id="address2"
@@ -53,6 +74,20 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="email"
+            name="email"
+            label="Email"
+            fullWidth
+            autoComplete="shipping address-line1"
+            variant="standard"
+            onChange={(e)=>handelChange(e)}
+            type="email"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -64,6 +99,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -73,6 +109,7 @@ export default function AddressForm() {
             label="State/Province/Region"
             fullWidth
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -84,6 +121,9 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
+            inputMode="numeric"
+            onChange={(e)=>handelChange(e)}
+          type="number"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -95,6 +135,7 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping country"
             variant="standard"
+            onChange={(e)=>handelChange(e)}
           />
         </Grid>
 
