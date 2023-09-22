@@ -55,7 +55,7 @@ export default function Checkout() {
   const [userData, setuserData]: any = useState();
   const router = useRouter();
   const { cartItems ,TotalPrice }: any = useCart();
-  const [mailAlert,setMailAlert]=useState<number>();
+  const [mailAlert,setMailAlert]:any=useState();
 
  
 
