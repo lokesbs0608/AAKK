@@ -80,7 +80,7 @@ export default function ImgMediaCard(props: any) {
             >
                 <Image
                 unoptimized
-                 className="w-full"
+                 className="w-full rounded-t-lg"
                   style={{ height: "12rem" }}
                   src={item.images[0]}
                 width={100}

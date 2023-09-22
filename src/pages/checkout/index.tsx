@@ -19,6 +19,9 @@ import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useUser } from "@/Utlities/UserContext";
 import { useCart } from "../../Utlities/CartContext/index";
+import {object, z} from 'zod'
+
+
 
 function Copyright() {
   return (
@@ -48,13 +51,13 @@ function getStepContent(step: number) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const { checkoutDetails } = useUser();
+  const { checkoutDetails, setValidationErrors,validationErrors} = useUser();
   const [userData, setuserData]: any = useState();
   const router = useRouter();
-  const form: any = useRef();
   const { cartItems ,TotalPrice }: any = useCart();
+  const [mailAlert,setMailAlert]=useState<number>();
 
-  
+ 
 
   useEffect(() => {
     setuserData(checkoutDetails);
@@ -84,10 +87,10 @@ export default function Checkout() {
   const messageText = messageHTML.toString().replace(/<\/?[^>]+(>|$)/g, "");
   const sendEmail = (e: any) => {
     e.preventDefault();
-
+    setMailAlert((prev:any)=>prev+1)
     const toEmail = userData ? userData.email : "fallback@example.com";
-    const FirstName=userData?.firstname;
-    const LastName=userData?.lastname;
+    const FirstName=userData?.firstName;
+    const LastName=userData?.lastName;
     const TotalToMail=TotalPrice;
     const templateParams: any = {
       to_email: toEmail,
@@ -105,19 +108,52 @@ export default function Checkout() {
       )
       .then((result) => {
         console.log(result.text);
-        alert('Mail send Given to Account ')
+        alert('Mail send to Given  Account ')
       })
       .catch((error) => {
         console.log(error.text);
       });
   };
 
+  const handelMailalert=()=>{
+    alert('Already Mail Sent')
+  }
+
   // -----------------------------to send email to customer end here --------------------------------------------------------------------
+  const CheckoutSchema = z.object({
+    firstName: z.string().min(2, { message: 'Must be at least 2 or more characters long' }),
+    lastName: z.string().optional(),
+    address1: z.string().min(5, { message: 'Must be at least 10 or more characters long' }),
+    address2: z.string().optional(),
+    email: z.string().email({ message: 'Enter Valid Email address' }),
+    city:z.string().min(2, { message: 'Must be at least 2 or more characters long' }),
+    state:z.string().min(2, { message: 'Must be at least 2 or more characters long' }),
+    zip: z.string().min(6, { message: 'Must be at least 6 or more characters long' }),
+    country:z.string().min(2, { message: 'Must be at least 2 or more characters long' }),
 
+
+    // Add validation rules for other fields here...
+  });
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    let zodErrors={}
+    const validationResult = CheckoutSchema.safeParse(checkoutDetails);
+    if (validationResult.success) {
+      // Continue to the next page, no errors
+      setValidationErrors(null);
+      setActiveStep(activeStep + 1);
+    } else {
+      
+         validationResult.error.issues.forEach((issue:any) => {
+          zodErrors={...zodErrors, [issue.path[0]] : issue.message};
+      });
+      
+      setValidationErrors(zodErrors);
+      console.log(zodErrors.hasOwnProperty('undefined'))
+      if(zodErrors.hasOwnProperty('undefined')){
+          alert("pls Fill the form below")
+      }
+    }
   };
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
@@ -184,7 +220,7 @@ export default function Checkout() {
                 {activeStep === steps.length - 1 ? (
                   <button
                     className="text-center px-4 py-2 mt-12 "
-                    onClick={(e) => sendEmail(e)}
+                    onClick={mailAlert >=1?handelMailalert:(e) => sendEmail(e) }
                     style={{ backgroundColor: "#003366", color: "#fff" }}
                   >
                     Place order

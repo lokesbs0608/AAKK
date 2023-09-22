@@ -187,7 +187,9 @@ useEffect(() => {
              
 
                 {Array.isArray(ProductData?.size) && ProductData.size.length > 0 &&(
-                <div className="flex">   <p className="mr-4 font-semibold text-xl">Size: </p><select
+                <div className="flex">  
+                 <p className="mr-4 font-semibold text-xl">Size: </p>
+                 <select className="ml-3"
                     name="size"
                     id="size"
                     style={{ width: "10rem", borderRadius: "4px", padding: "3px" }}
@@ -231,6 +233,7 @@ useEffect(() => {
                     border: "1px solid black ",
                     width: "10rem",
                     borderRadius: "4px",
+                    padding:"3px"
                   }}
                   min="0" 
                   value={quantity}

@@ -21,7 +21,6 @@ const Cart = () => {
   const [indexOfItem, setindexOfItem]: any = useState();
   const [decrmentQuantity, setDecrmentQunantity]: any = useState();
   const router = useRouter();
-  const [finalPrice, setfinalPrice]: any = useState();
   // const [items,setItems]:any=useState()
 
   // const fetchCartData = () => {
@@ -107,7 +106,7 @@ const Cart = () => {
             return (
               <div
                 key={item.id}
-                className="md:w-full w-full  grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                className="md:w-4/5 w-full ml-10 grid grid-cols-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
                 <div>
                   <a href="#">
@@ -137,7 +136,7 @@ const Cart = () => {
                         onClick={() => decrementQuantityChange(index, item)}
                         className="border-2  border-solid "
                         style={{ width: "20px" }}
-                        disabled={item.quantity === 0 ? true : false}
+                        disabled={item.quantity === 1 ? true : false}
                       >
                         -
                       </button>

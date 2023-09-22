@@ -11,6 +11,7 @@ const UserContext = createContext<any | null>(null);
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<any[] | null>(null);
 const [checkoutDetails,setcheckoutDetails]=useState([{}]);
+const [validationErrors, setValidationErrors]:any = useState();
 
 
   const login = (userData: any) => {
@@ -24,7 +25,7 @@ const [checkoutDetails,setcheckoutDetails]=useState([{}]);
  
 
   return (
-    <UserContext.Provider value={{ user, login, logout ,checkoutDetails,setcheckoutDetails }}>
+    <UserContext.Provider value={{ user, login, logout ,checkoutDetails,setcheckoutDetails,setValidationErrors,validationErrors }}>
       {children}
     </UserContext.Provider>
   );
