@@ -58,7 +58,7 @@ export const CartProvider = ({ children }: any) => {
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     let total = 0;
-    for (let i = 0; i < cartItems.length; i++) {
+    for (let i = 0; i < cartItems?.length; i++) {
       const price = parseFloat(
         `${cartItems[i].Finalprice ? cartItems[i].Finalprice : ""}`
       );
@@ -82,7 +82,8 @@ useEffect(()=>{
         TotalPrice,
         UpdateFinalPrice,
         SearchProduct,
-        search
+        search,
+        setCartItems
       }}
     >
       {children}

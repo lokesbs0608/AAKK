@@ -24,6 +24,8 @@ import { json } from "stream/consumers";
 import Image from "next/image";
 
 
+
+
 export default function ImgMediaCard(props: any) {
 
   const { addItemToCart, cartItems,search }: any = useCart();
@@ -57,7 +59,8 @@ export default function ImgMediaCard(props: any) {
   // };
 
   const handelProductNavigation=(event:any,item:any)=>{
-  console.log(item)
+   
+
    router.push(`/products/${item.id}?data=${encodeURIComponent(JSON.stringify(item))}`)
   }
   

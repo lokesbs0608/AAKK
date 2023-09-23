@@ -118,7 +118,7 @@ export default function Header() {
               }}
             >
               <List className="" sx={{ backgroundColor: "#0033" }}>
-                <ListItem
+                {/* <ListItem
                   button
                   onClick={() => handleMenuItemClick("/blogs")}
                   sx={{
@@ -131,8 +131,8 @@ export default function Header() {
                   }}
                 >
                   Blogs
-                </ListItem>
-                <ListItem
+                </ListItem> */}
+                {/* <ListItem
                   button
                   sx={{
                     backgroundColor: "#003366",
@@ -145,7 +145,7 @@ export default function Header() {
                   onClick={() => handleMenuItemClick("/courses")}
                 >
                   Courses
-                </ListItem>
+                </ListItem> */}
                 <ListItem
                   button
                   onClick={() => handleMenuItemClick("/videos")}
@@ -194,12 +194,12 @@ export default function Header() {
           {/* Menu Items for Desktop */}
           <Hidden lgDown>
             <div className="">
-              <Button color="inherit" onClick={() => handelRouter("/blogs")}>
+              {/* <Button color="inherit" onClick={() => handelRouter("/blogs")}>
                 Blogs
               </Button>
               <Button color="inherit" onClick={() => handelRouter("/courses")}>
                 Courses
-              </Button>
+              </Button> */}
               <Button color="inherit" onClick={() => handelRouter("/videos")}>
                 Videos
               </Button>

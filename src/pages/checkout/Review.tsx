@@ -7,7 +7,6 @@ import Grid from '@mui/material/Grid';
 import { useCart } from '../../Utlities/CartContext';
 import { useEffect, useState } from 'react';
 
-
 export default function Review() {
  
 
@@ -25,7 +24,7 @@ console.log(TotalPrice)
         Order summary
       </Typography>
       <List disablePadding>
-        {cartItems.map((product:any) => (
+        {cartItems?.map((product:any) => (
           <ListItem key={product.id} sx={{ py: 1, px: 0 }}>
             <ListItemText primary={product.title}  />
             <Typography variant="body2">{product.Finalprice}</Typography>

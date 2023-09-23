@@ -17,7 +17,7 @@ const LayoutComponent = ({ children }: any) => {
         <div className="fixed top-0 left-0 w-full">
          <HeaderComponent />
         </div>
-        <div className="my-12 px-12 py-12  h-[calc(100vh-64px)] p-2 scrollbar-hide  overflow-y-scroll overflow-x-hidden ">
+        <div className="my-12 px-12 py-12  h-[calc(100vh-64px)] p-2 scrollbar-hide  overflow-y-scroll overflow-x-hidden z-1">
           {children}
         </div>
         <div className="absolute  w-full">

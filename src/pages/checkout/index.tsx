@@ -14,12 +14,13 @@ import Typography from "@mui/material/Typography";
 import AddressForm from "./addressform";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useUser } from "@/Utlities/UserContext";
 import { useCart } from "../../Utlities/CartContext/index";
 import {object, z} from 'zod'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -51,12 +52,12 @@ function getStepContent(step: number) {
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const { checkoutDetails, setValidationErrors,validationErrors} = useUser();
+  const { checkoutDetails, setValidationErrors,} = useUser();
   const [userData, setuserData]: any = useState();
   const router = useRouter();
-  const { cartItems ,TotalPrice }: any = useCart();
-  const [mailAlert,setMailAlert]:any=useState();
-
+  const { cartItems ,TotalPrice,setCartItems }: any = useCart();
+ 
+console.log(cartItems)
  
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export default function Checkout() {
   const messageText = messageHTML.toString().replace(/<\/?[^>]+(>|$)/g, "");
   const sendEmail = (e: any) => {
     e.preventDefault();
-    setMailAlert((prev:any)=>prev+1)
+ 
     const toEmail = userData ? userData.email : "fallback@example.com";
     const FirstName=userData?.firstName;
     const LastName=userData?.lastName;
@@ -108,16 +109,21 @@ export default function Checkout() {
       )
       .then((result) => {
         console.log(result.text);
-        alert('Mail send to Given  Account ')
+        toast.success("Mail Send Successfully !", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000
+        });
+      router.push('/');
+       setCartItems(null);
+      
       })
       .catch((error) => {
         console.log(error.text);
       });
+
+      
   };
 
-  const handelMailalert=()=>{
-    alert('Already Mail Sent')
-  }
 
   // -----------------------------to send email to customer end here --------------------------------------------------------------------
   const CheckoutSchema = z.object({
@@ -162,7 +168,7 @@ export default function Checkout() {
     router.push("/cart");
   };
   return (
-    <div>
+    <div >
       <CssBaseline />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
@@ -220,7 +226,7 @@ export default function Checkout() {
                 {activeStep === steps.length - 1 ? (
                   <button
                     className="text-center px-4 py-2 mt-12 "
-                    onClick={mailAlert >=1?handelMailalert:(e) => sendEmail(e) }
+                    onClick={(e) => sendEmail(e) }
                     style={{ backgroundColor: "#003366", color: "#fff" }}
                   >
                     Place order
